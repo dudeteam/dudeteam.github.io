@@ -1,0 +1,66 @@
+<link rel="import" href="../bower_components/polymer/polymer.html">
+<link rel="import" href="../bower_components/iron-pages/iron-pages.html">
+<dom-module id="dude-property">
+    <style>
+        :host {
+            display: block;
+            padding: 10px 0;
+        }
+        label {
+            display: block;
+            padding-bottom: 5px;
+            color: var(--text-secondary-color);
+        }
+        input[type="text"], input[type="number"] {
+            color: var(--text-content-color);
+            background: transparent;
+            border: none;
+            border-bottom: 1px solid #aaaaaa;
+            outline: none;
+            font-size: 1em;
+            font-family: var(--text-content-font);
+        }
+        input[type="text"]:not(:first-child), input[type="number"]:not(:first-child) {
+            margin-left: 10px;
+        }
+        input[type="text"]:focus,  input[type="number"]:focus {
+            border-bottom: 2px solid var(--default-primary-color);
+        }
+    </style>
+    <template>
+        <label>{{property.name}}</label>
+        <iron-pages attr-for-selected="data-type" selected="{{property.type}}">
+            <div data-type="vec3" class="layout horizontal">
+                <input value="{{property.value.x}}" class="flex" type="number" is="iron-input">
+                <input value="{{property.value.y}}" class="flex" type="number" is="iron-input">
+                <input value="{{property.value.z}}" class="flex" type="number" is="iron-input">
+            </div>
+            <div data-type="vec2" class="layout horizontal">
+                <input value="{{property.value.x}}" class="flex" type="number" is="iron-input">
+                <input value="{{property.value.y}}" class="flex" type="number" is="iron-input">
+            </div>
+            <div data-type="number" class="layout horizontal">
+                <input value="{{property.value}}" class="flex" type="number" is="iron-input">
+            </div>
+            <div data-type="string" class="layout horizontal">
+                <input value="{{property.value}}" class="flex" type="text" is="iron-input">
+            </div>
+            <div data-type="color">
+                <input value="{{property.value}}" class="flex" type="color" is="iron-input">
+            </div>
+        </iron-pages>
+    </template>
+    <script>
+        Polymer({
+            is: "dude-property",
+            properties: {
+
+                /**
+                 * An object which stores the name and the value of the property.
+                 */
+                property: Object
+
+            }
+        });
+    </script>
+</dom-module>
