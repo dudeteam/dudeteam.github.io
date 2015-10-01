@@ -29,8 +29,13 @@
             box-sizing: border-box;
         }
         header {
-            padding: 20px;
-            background: #333333;
+            position: relative;
+            height: 500px;
+            overflow: hidden;
+            background: rgba(0, 0, 0, .5);
+        }
+        .header-content {
+            z-index: 2;
         }
         .header-title {
             font-size: 5em;
@@ -40,7 +45,7 @@
             color: var(--text-primary-color);
             width: 100px;
             height: 100px;
-            margin: 20px auto;
+            margin: 100px auto 20px;
             padding-top: 20px;
             box-sizing: border-box;
         }
@@ -56,11 +61,14 @@
             font-size: 1.5em;
         }
         header video {
-            display: block;
-            margin: 20px auto 0;
-            width: 700px;
-            max-width: 100%;
-            border: 2px solid var(--default-primary-color);
+            z-index: -1;
+            position: absolute;
+            top: 0;
+            right: 0;
+            left: 0;
+            bottom: 0;
+            width: 100%;
+            height: 100%;
         }
         section {
             padding: 20px;
@@ -134,10 +142,12 @@
             <paper-button>Try the beta</paper-button>
         </nav>
         <header>
-            <div class="header-title">D</div>
-            <div class="header-description">A game editor designed for teamwork and flexibility</div>
-            <paper-button id="startButton">Try the beta</paper-button>
-            <video controls>
+            <div class="header-content">
+                <div class="header-title">D</div>
+                <div class="header-description">A game editor designed for teamwork and flexibility</div>
+                <paper-button id="startButton">Try the beta</paper-button>
+            </div>
+            <video autoplay>
                 <source src="../resources/videos/Dude.mp4" type="video/mp4">
                 Your browser does not support the video tag.
             </video>
@@ -263,7 +273,7 @@
             ready: function () {
                 this._navHidden = true;
                 window.addEventListener("scroll", function () {
-                    this.set('_navHidden', document.body.scrollTop < 250);
+                    this.set('_navHidden', document.body.scrollTop < 450);
                 }.bind(this));
             }
         });
