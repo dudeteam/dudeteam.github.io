@@ -1,0 +1,12 @@
+{
+  "name": "dude-website",
+  "version": "0.0.1",
+  "description": "DUDE's website",
+  "dependencies": {
+    "polymer": "Polymer/polymer#^1.0.0",
+    "mdi": "~1.2.65",
+    "paper-button": "PolymerElements/paper-button#~1.0.7",
+    "paper-input": "PolymerElements/paper-input#~1.0.15",
+    "iron-flex-layout": "PolymerElements/iron-flex-layout#~1.0.4"
+  }
+}

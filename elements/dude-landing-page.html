@@ -1,0 +1,240 @@
+<link rel="import" href="../bower_components/polymer/polymer.html">
+<link rel="import" href="../bower_components/paper-button/paper-button.html">
+<link rel="import" href="../bower_components/paper-input/paper-input.html">
+<dom-module id="dude-landing-page">
+    <style>
+        paper-button {
+            border-radius: 0;
+            background: var(--default-primary-color);
+            color: var(--text-primary-color);
+        }
+        header {
+            padding: 20px;
+            background: #333333;
+            border-top: 5px solid var(--default-primary-color);
+        }
+        .header-title {
+            font-size: 5em;
+            text-align: center;
+            background: var(--default-primary-color);
+            font-weight: 300;
+            color: var(--text-primary-color);
+            width: 100px;
+            height: 100px;
+            margin: 20px auto;
+            padding-top: 20px;
+            box-sizing: border-box;
+        }
+        .header-description {
+            font-size: 1.5em;
+            text-align: center;
+        }
+        #startButton {
+            display: block;
+            margin: 20px auto;
+            max-width: 250px;
+            padding: 20px;
+            font-size: 1.5em;
+        }
+        header video {
+            display: block;
+            margin: 20px auto 0;
+            width: 700px;
+            max-width: 100%;
+            border: 2px solid var(--default-primary-color);
+        }
+        section {
+            padding: 20px;
+        }
+        section:nth-child(odd) {
+            background: #333333;
+        }
+        .section-content {
+            margin: auto;
+            max-width: 900px;
+        }
+        .section-title {
+            text-align: center;
+            font-size: 2.5em;
+            color: var(--text-title-color);
+            margin-bottom: 20px;
+        }
+        /* features */
+        .feature {
+            min-width: 200px;
+            padding: 20px;
+            text-align: center;
+        }
+        .feature i {
+            color: var(--default-primary-color);
+            font-size: 2em;
+            margin-bottom: 10px;
+        }
+        .feature .feature-title {
+            color: var(--text-title-color);
+            font-size: 1.5em;
+            padding-bottom: 10px;
+        }
+        .card {
+            min-width: 200px;
+            padding: 20px;
+            margin: 10px;
+            text-transform: none;
+        }
+        .card-title {
+            font-size: 1.5em;
+        }
+        .card i {
+            font-size: 3em;
+            padding-bottom: 10px;
+        }
+        .team-card {
+            min-width: 150px;
+            max-width: 150px;
+            text-align: center;
+        }
+        .team-card .img-holder {
+            width: 100px;
+            height: 100px;
+            overflow: hidden;
+            border: 2px solid var(--default-primary-color);
+            display: inline-block;
+        }
+        .team-card .img-holder img {
+            width: 100%;
+        }
+        footer {
+            padding: 20px;
+            text-align: center;
+        }
+    </style>
+    <template>
+        <header>
+            <div class="header-title">D</div>
+            <div class="header-description">A game editor designed for teamwork and flexibility</div>
+            <paper-button id="startButton">Try the beta</paper-button>
+            <video controls>
+                <source src="../resources/videos/Dude.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+        </header>
+        <section>
+            <div class="section-title">Features</div>
+            <div class="layout horizontal wrap section-content">
+                <div class="feature flex">
+                    <i class="mdi mdi-cloud"></i>
+                    <div class="feature-title">Cloud</div>
+                    <div class="feature-description">
+                        The editor is directly available on this website. Moreover, we will allow to build games for
+                        any platform directly on the cloud!
+                    </div>
+                </div>
+                <div class="feature flex">
+                    <i class="mdi mdi-cellphone-iphone"></i>
+                    <div class="feature-title">Adaptive UI</div>
+                    <div class="feature-description">
+                        The UI is design to work well on several screens and devices. You can edit your game from your
+                        computer as well as from your tablet or smartphone.
+                    </div>
+                </div>
+                <div class="feature flex">
+                    <i class="mdi mdi-share-variant"></i>
+                    <div class="feature-title">Visual coding</div>
+                    <div class="feature-description">
+                        If you are a game designer, you don't need to know code to create awesome games. Try our visual
+                        coding tool!
+                    </div>
+                </div>
+                <div class="feature flex">
+                    <i class="mdi mdi-emoticon"></i>
+                    <div class="feature-title">Teamwork</div>
+                    <div class="feature-description">This feature is really amazing, it takes your ideas and make them even better!</div>
+                </div>
+                <div class="feature flex">
+                    <i class="mdi mdi-settings"></i>
+                    <div class="feature-title">Customisation</div>
+                    <div class="feature-description">This feature is really amazing, it takes your ideas and make them even better!</div>
+                </div>
+                <div class="feature flex">
+                    <i class="mdi mdi-brush"></i>
+                    <div class="feature-title">Graphics</div>
+                    <div class="feature-description">This feature is really amazing, it takes your ideas and make them even better!</div>
+                </div>
+            </div>
+        </section>
+        <section>
+            <div class="section-title">Get started</div>
+            <div class="layout horizontal wrap section-content">
+                <paper-button href="#tutorials" class="card flex">
+                    <i class="mdi mdi-folder"></i>
+                    <div class="card-title">Tutorials</div>
+                </paper-button>
+                <paper-button href="#documentation" class="card flex">
+                    <i class="mdi mdi-file-document-box"></i>
+                    <div class="card-title">Documentation</div>
+                </paper-button>
+                <paper-button href="#examples" class="card flex">
+                    <i class="mdi mdi-gamepad-variant"></i>
+                    <div class="card-title">Examples</div>
+                </paper-button>
+            </div>
+        </section>
+        <section>
+            <div class="section-title">Meet the team</div>
+            <div class="layout horizontal wrap center-justified section-content">
+                <div class="flex team-card">
+                    <div class="img-holder"><img src="https://scontent.xx.fbcdn.net/hphotos-xfp1/t31.0-8/885073_10200770031802171_11331858_o.jpg"></div>
+                    <p>Dorian</p>
+                </div>
+                <div class="flex team-card">
+                    <div class="img-holder"><img src="https://scontent.xx.fbcdn.net/hphotos-xfp1/t31.0-8/11174658_10205527995430857_4916410346246699927_o.jpg"></div>
+                    <p>Maxime</p>
+                </div>
+                <div class="flex team-card">
+                    <div class="img-holder"><img src="https://scontent.xx.fbcdn.net/hphotos-xft1/v/t1.0-9/10408096_10206016238066609_1062278070760838536_n.jpg?oh=5c73ef9dc6ee0db89d4ba47288116c3f&oe=568E091C"></div>
+                    <p>Thibault</p>
+                </div>
+                <div class="flex team-card">
+                    <div class="img-holder"><img src="https://fbcdn-profile-a.akamaihd.net/hprofile-ak-xap1/v/t1.0-1/p320x320/10394791_10205558709711367_6706374819671688008_n.jpg?oh=252372579b74f760d44c9c7c1ade7746&oe=56A0B844&__gda__=1453914769_003a8ec45daabb64eb972ea7b5ede2d0"></div>
+                    <p>Jonathan</p>
+                </div>
+                <div class="flex team-card">
+                    <div class="img-holder"><img src="https://scontent.xx.fbcdn.net/hphotos-xap1/v/t1.0-9/1069133_604926872871054_1691834025_n.jpg?oh=ae037b4449cadd0d45a96e15fdbd0f61&oe=56886538"></div>
+                    <p>Jeremie</p>
+                </div>
+            </div>
+        </section>
+        <section>
+            <div class="section-title">Give us feedbacks!</div>
+            <div class="layout horizontal wrap section-content">
+                <div class="flex" style="min-width: 200px; padding: 20px">
+                    <p>
+                        DUDE is in its very early stage. Everything is evolving very fast, that's why we need your
+                        feedbacks to build a better product.
+                    </p>
+                    <p>
+                        Try the alpha, and tell us about the features you like or you dislikes. You can also propose
+                        us new features that you think would be useful to the project.
+                    </p>
+                    <p>
+                        Thank you!
+                    </p>
+                </div>
+                <div class="flex" style="min-width: 200px; padding: 20px">
+                    <paper-input label="Email"></paper-input>
+                    <paper-input label="Object"></paper-input>
+                    <paper-input label="Content"></paper-input>
+                    <paper-button>Send</paper-button>
+                </div>
+            </div>
+        </section>
+        <footer>
+            (c) Dude 2015
+        </footer>
+    </template>
+    <script>
+        Polymer({
+            is: "dude-landing-page"
+        });
+    </script>
+</dom-module>
