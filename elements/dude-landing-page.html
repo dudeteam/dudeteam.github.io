@@ -284,10 +284,13 @@
                 <dude-property property="{{_propertyName}}"></dude-property>
                 <dude-property property="{{_propertyRatio}}"></dude-property>
                 <dude-property property="{{_propertyColor}}"></dude-property>
+                <dude-property property="{{_propertyEnabled}}"></dude-property>
+                <dude-property property="{{_propertyTexture}}"></dude-property>
+                <dude-property property="{{_propertyFov}}"></dude-property>
             </div>
         </section>
         <section>
-            <div class="section-title">Find us on social networks!</div>
+            <div class="section-title">Find us on social networks</div>
             <div class="section-content layout horizontal wrap">
                 <paper-button id="facebook-card" class="flex card">
                     <i class="mdi mdi-facebook"></i>
@@ -312,12 +315,16 @@
             is: "dude-landing-page",
 
             ready: function () {
-                this.set('_propertyPosition', {name: 'position', type: 'vec3', value: {x: 0, y: 0, z: 0}});
-                this.set('_propertyUv', {name: 'uv', type: 'vec2', value: {x: 0, y: 1}});
-                this.set('_propertyRatio', {name: 'ratio', type: 'number', value: 0.3});
-                this.set('_propertyName', {name: 'name', type: 'string', value: "My entity"});
-                this.set('_propertyColor', {name: 'color', type: 'color', value: "#ff0000"});
-                this.set('_navHidden', true);
+                this.set("_propertyPosition", {name: "position", type: "vec3", value: {x: 0, y: 0, z: 0}});
+                this.set("_propertyUv", {name: "uv", type: "vec2", value: {x: 0, y: 1}});
+                this.set("_propertyRatio", {name: "ratio", type: "number", value: 0.3});
+                this.set("_propertyName", {name: "name", type: "string", value: "My entity"});
+                this.set("_propertyColor", {name: "color", type: "color", value: "#ff0000"});
+                this.set("_propertyFov", {name: "fov", type: "range", value: {min: 0, max: 1, step: 0.1, value: 0}});
+                this.set("_propertyEnabled", {name: "enabled", type: "boolean", value: true});
+                this.set("_propertyTexture", {name: "texture", type: "resource", value: "test.png"});
+                this.set("_propertyShapes")
+                this.set("_navHidden", true);
                 window.addEventListener("scroll", function () {
                     this.set('_navHidden', document.body.scrollTop < 450);
                 }.bind(this));

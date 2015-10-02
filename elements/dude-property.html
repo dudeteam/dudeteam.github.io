@@ -1,5 +1,9 @@
 <link rel="import" href="../bower_components/polymer/polymer.html">
 <link rel="import" href="../bower_components/iron-pages/iron-pages.html">
+<link rel="import" href="../bower_components/paper-button/paper-button.html">
+<link rel="import" href="../bower_components/paper-dropdown-menu/paper-dropdown-menu.html">
+<link rel="import" href="../bower_components/paper-menu/paper-menu.html">
+<link rel="import" href="../bower_components/paper-item/paper-item.html">
 <dom-module id="dude-property">
     <style>
         :host {
@@ -26,6 +30,12 @@
         input[type="text"]:focus,  input[type="number"]:focus {
             border-bottom: 2px solid var(--default-primary-color);
         }
+        paper-button {
+            text-transform: none;
+            text-align: left;
+            margin: 0;
+            background: #444444;
+        }
     </style>
     <template>
         <label>{{property.name}}</label>
@@ -45,8 +55,35 @@
             <div data-type="string" class="layout horizontal">
                 <input value="{{property.value}}" class="flex" type="text" is="iron-input">
             </div>
+            <div data-type="boolean">
+                <input value="{{property.value}}" type="checkbox" is="iron-input">
+            </div>
             <div data-type="color">
                 <input value="{{property.value}}" class="flex" type="color" is="iron-input">
+            </div>
+            <div data-type="range">
+                <input value="{{property.value.value}}" class="flex" type="range"
+                       min="{{property.value.min}}"
+                       max="{{property.value.max}}"
+                       step="{{property.value.step}}">
+            </div>
+            <div data-type="resource">
+                <paper-button class="layout horizontal flex" style="display: block">
+                    <div class="layout horizontal flex">
+                        <div class="flex">{{property.value}}</div>
+                        <i class="mdi mdi-upload"></i>
+                    </div>
+                </paper-button>
+            </div>
+            <div data-type="choice">
+                <paper-dropdown-menu label="number">
+                    <paper-menu class="dropdown-content">
+                        <paper-item>Un</paper-item>
+                        <paper-item>Deux</paper-item>
+                        <paper-item>Trois</paper-item>
+                        <paper-item>Quatre</paper-item>
+                    </paper-menu>
+                </paper-dropdown-menu>
             </div>
         </iron-pages>
     </template>
