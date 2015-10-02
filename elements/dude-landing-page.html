@@ -31,7 +31,8 @@
         }
         header {
             position: relative;
-            height: 500px;
+            height: 100vh;
+            width: 100vw;
             overflow: hidden;
             background: rgba(0, 0, 0, .6);
         }
@@ -65,11 +66,14 @@
             z-index: -1;
             position: absolute;
             top: 0;
-            right: 0;
-            left: 0;
             bottom: 0;
+            min-width: 100%;
+            /*min-height: 100%; à mettre si on veux scale ou crop depuis la height*/
+            /*! a remove si tu on ne veux pas de scale*/
             width: 100%;
-            height: 100%;
+            /*height: 100%;*/
+            /**/
+            object-fit: fill;
         }
         section {
             padding: 20px;
