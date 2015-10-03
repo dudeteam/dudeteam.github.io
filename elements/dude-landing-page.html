@@ -22,15 +22,10 @@
             border-bottom: 2px solid var(--default-primary-color);
             box-shadow: 0 3px 8px rgba(0, 0, 0, .3);
         }
-        .nav-logo {
-            width: 35px;
-            height: 35px;
-            display: block;
-        }
         .nav-title {
             font-family: var(--logo-font);
             font-size: 1.5em;
-            padding-top: 7px;
+            padding-top: 10px;
             padding-left: 10px;
             color: var(--default-primary-color);
         }
@@ -51,12 +46,6 @@
             color: var(--default-primary-color);
             box-sizing: border-box;
             padding: 10px 0;
-        }
-        .header-logo {
-            margin: auto;
-            width: 150px;
-            height: 150px;
-            display: block;
         }
         .header-description {
             font-size: 1.5em;
@@ -171,10 +160,15 @@
             padding: 20px;
             margin: 10px;
         }
+        img.logo {
+            image-rendering: pixelated;
+            display: block;
+            margin: auto;
+        }
     </style>
     <template>
         <nav class="layout horizontal" hidden$="{{_navHidden}}">
-            <dude-logo class="nav-logo"></dude-logo>
+            <img src="../resources/images/dude-logo.png" width="40" class="logo">
             <div class="nav-title">DUDE</div>
             <div class="flex"></div>
             <paper-button>Try the beta</paper-button>
@@ -182,7 +176,8 @@
         <header>
             <div class="layout horizontal fit">
                 <div class="header-content self-center flex">
-                    <dude-logo class="header-logo"></dude-logo>
+                    <img src="../resources/images/dude-logo.png" width="200" class="logo">
+                    <!--<dude-logo class="header-logo"></dude-logo>-->
                     <div class="header-title">DUDE</div>
                     <div class="header-description">A game editor designed for teamwork and flexibility</div>
                     <paper-button id="startButton">Try the beta</paper-button>
