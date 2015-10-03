@@ -4,6 +4,8 @@
 <link rel="import" href="../bower_components/paper-dropdown-menu/paper-dropdown-menu.html">
 <link rel="import" href="../bower_components/paper-menu/paper-menu.html">
 <link rel="import" href="../bower_components/paper-item/paper-item.html">
+<link rel="import" href="../bower_components/paper-slider/paper-slider.html">
+<link rel="import" href="../bower_components/paper-toggle-button/paper-toggle-button.html">
 <dom-module id="dude-property">
     <style>
         :host {
@@ -56,16 +58,16 @@
                 <input value="{{property.value}}" class="flex" type="text" is="iron-input">
             </div>
             <div data-type="boolean">
-                <input value="{{property.value}}" type="checkbox" is="iron-input">
+                <paper-toggle-button value="{{property.value}}"></paper-toggle-button>
             </div>
             <div data-type="color">
                 <input value="{{property.value}}" class="flex" type="color" is="iron-input">
             </div>
             <div data-type="range">
-                <input value="{{property.value.value}}" class="flex" type="range"
+                <paper-slider value="{{property.value.value}}" class="flex"
                        min="{{property.value.min}}"
                        max="{{property.value.max}}"
-                       step="{{property.value.step}}">
+                       step="{{property.value.step}}"></paper-slider>
             </div>
             <div data-type="resource">
                 <paper-button class="layout horizontal flex" style="display: block">
