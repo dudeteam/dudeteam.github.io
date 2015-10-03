@@ -21,7 +21,7 @@
             color: var(--text-content-color);
             background: transparent;
             border: none;
-            border-bottom: 1px solid #aaaaaa;
+            border-bottom: 1px solid var(--text-secondary-color);
             outline: none;
             font-size: 1em;
             font-family: var(--text-content-font);
@@ -37,6 +37,9 @@
             text-align: left;
             margin: 0;
             background: #444444;
+        }
+        paper-slider {
+            width: 100%;
         }
     </style>
     <template>
@@ -67,7 +70,7 @@
                 <paper-slider value="{{property.value.value}}" class="flex"
                        min="{{property.value.min}}"
                        max="{{property.value.max}}"
-                       step="{{property.value.step}}"></paper-slider>
+                       step="{{property.value.step}}" pin></paper-slider>
             </div>
             <div data-type="resource">
                 <paper-button class="layout horizontal flex" style="display: block">

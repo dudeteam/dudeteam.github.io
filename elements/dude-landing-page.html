@@ -1,6 +1,7 @@
 <link rel="import" href="../bower_components/polymer/polymer.html">
 <link rel="import" href="../bower_components/paper-button/paper-button.html">
 <link rel="import" href="../bower_components/paper-input/paper-input.html">
+<link rel="import" href="../bower_components/magnet-hierarchy/magnet-hierarchy.html">
 <link rel="import" href="dude-logo.html">
 <link rel="import" href="dude-property.html">
 <link href='//fonts.googleapis.com/css?family=Slackey' rel='stylesheet' type='text/css'>
@@ -34,7 +35,6 @@
             color: var(--default-primary-color);
         }
         header {
-            position: relative;
             height: 100vh;
             width: 100vw;
             overflow: hidden;
@@ -69,8 +69,7 @@
             font-size: 1.5em;
         }
         header video {
-            z-index: -1;
-            position: absolute;
+            position: relative;
             top: 0;
             bottom: 0;
             min-width: 100%;
@@ -173,11 +172,13 @@
                     <div class="header-title">DUDE</div>
                     <div class="header-description">A game editor designed for teamwork and flexibility</div>
                     <paper-button id="startButton">Try the beta</paper-button>
-                </div>
-            <video autoplay loop muted>
-                <source src="../resources/videos/Dude.mp4" type="video/mp4">
-                Your browser does not support the video tag.
-            </video>
+            </div>
+            <div class="fit">
+                <video autoplay loop muted>
+                    <source src="../resources/videos/presentation-video.mp4" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
+            </div>
         </header>
         <section>
             <div class="section-title">Features</div>
@@ -304,10 +305,12 @@
                     <dude-property property="{{_propertyFov}}"></dude-property>
                 </div>
                 <div class="flex ui-column">
-                    TODO
+                    <div style="font-size: 1.5em">Test hierarchy</div>
+                    <magnet-hierarchy id="hierarchy" items="{{_hierarchyItems}}"></magnet-hierarchy>
                 </div>
                 <div class="flex ui-column">
-                    TODO
+                    <div style="font-size: 1.5em">Another test</div>
+                    <div>TODO</div>
                 </div>
             </div>
         </section>
@@ -342,10 +345,35 @@
                 this.set("_propertyRatio", {name: "ratio", type: "number", value: 0.3});
                 this.set("_propertyName", {name: "name", type: "string", value: "My entity"});
                 this.set("_propertyColor", {name: "color", type: "color", value: "#ff0000"});
-                this.set("_propertyFov", {name: "fov", type: "range", value: {min: 0, max: 1, step: 0.1, value: 0}});
+                this.set("_propertyFov", {name: "fov", type: "range", value: {min: 1, max: 180, step: 1, value: 0}});
                 this.set("_propertyEnabled", {name: "enabled", type: "boolean", value: true});
                 this.set("_propertyTexture", {name: "texture", type: "resource", value: "test.png"});
                 this.set("_propertyShapes", {name: "shapes", type: "choice", value: ["rect", "circle", "triangle"]});
+                this.set("_hierarchyItems", [
+                    {item: {name: "item1", data: "item1"}},
+                    {item: {name: "item2", data: "item2"}},
+                    {item: {name: "item3", data: "item3"}},
+                    {item: {name: "item4", data: "item4"}},
+                    {group: {name: "item5", data: "item5", items: [
+                        {item: {name: "item5.1", data: "item5.1"}},
+                        {item: {name: "item5.2", data: "item5.2"}},
+                        {item: {name: "item5.3", data: "item5.3"}},
+                        {item: {name: "item5.4", data: "item5.4"}},
+                        {group: {name: "item5.5", data: "item5.5", items: [
+                            {item: {name: "item5.5.1", data: "item5.5.1"}},
+                            {item: {name: "item5.5.2", data: "item5.5.2"}}
+                        ]}}
+                    ]}},
+                    {group: {name: "empty_folder", data: "empty"}},
+                    {item: {name: "item6", data: "item6"}},
+                    {item: {name: "item7", data: "item7"}},
+                    {group: {name: "test_folder", items: [
+                        {item: {name: "first item"}},
+                        {item: {name: "item1", data: "item1"}},
+                        {item: {name: "item2", data: "item2"}}
+                    ]}}
+                ]);
+                this.$.hierarchy.loadItems(this._hierarchyItems);
                 this.set("_navHidden", true);
                 window.addEventListener("scroll", function () {
                     this.set('_navHidden', document.body.scrollTop < window.innerHeight);

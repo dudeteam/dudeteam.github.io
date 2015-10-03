@@ -10,6 +10,7 @@
     "iron-flex-layout": "PolymerElements/iron-flex-layout#~1.0.4",
     "iron-pages": "PolymerElements/iron-pages#~1.0.3",
     "paper-slider": "PolymerElements/paper-slider#~1.0.6",
-    "paper-toggle-button": "PolymerElements/paper-toggle-button#~1.0.10"
+    "paper-toggle-button": "PolymerElements/paper-toggle-button#~1.0.10",
+    "magnet-hierarchy": "~0.0.6"
   }
 }
