@@ -1,7 +1,9 @@
 <link rel="import" href="../bower_components/polymer/polymer.html">
 <link rel="import" href="../bower_components/paper-button/paper-button.html">
 <link rel="import" href="../bower_components/paper-input/paper-input.html">
+<link rel="import" href="dude-logo.html">
 <link rel="import" href="dude-property.html">
+<link href='//fonts.googleapis.com/css?family=Slackey' rel='stylesheet' type='text/css'>
 <dom-module id="dude-landing-page">
     <style>
         paper-button {
@@ -17,39 +19,43 @@
             right: 0;
             padding: 10px;
             z-index: 10;
+            border-bottom: 2px solid var(--default-primary-color);
+            box-shadow: 0 3px 8px rgba(0, 0, 0, .3);
+        }
+        .nav-logo {
+            width: 35px;
+            height: 35px;
+            display: block;
         }
         .nav-title {
-            font-size: 1.7em;
-            text-align: center;
-            background: var(--default-primary-color);
-            font-weight: 300;
-            color: var(--text-primary-color);
-            width: 40px;
-            height: 40px;
-            padding-top: 10px;
-            box-sizing: border-box;
+            font-family: Slackey, sans-serif;
+            font-size: 1.5em;
+            padding-left: 10px;
+            color: var(--default-primary-color);
         }
         header {
             position: relative;
             height: 100vh;
             width: 100vw;
             overflow: hidden;
-            background: rgba(0, 0, 0, .6);
+            background: rgba(0, 0, 0, .5);
         }
         .header-content {
             z-index: 2;
         }
         .header-title {
-            font-size: 5em;
+            font-family: Slackey, sans-serif;
+            font-size: 3em;
             text-align: center;
-            background: var(--default-primary-color);
-            font-weight: 300;
-            color: var(--text-primary-color);
-            width: 100px;
-            height: 100px;
-            margin: 100px auto 20px;
-            padding-top: 20px;
+            color: var(--default-primary-color);
+            /*font-weight: 300;*/
             box-sizing: border-box;
+        }
+        .header-logo {
+            margin: auto;
+            width: 150px;
+            height: 150px;
+            display: block;
         }
         .header-description {
             font-size: 1.5em;
@@ -147,19 +153,27 @@
             padding: 20px;
             text-align: center;
         }
+        .ui-column {
+            min-width: 200px;
+            background: rgba(0, 0, 0, .2);
+            padding: 20px;
+            margin: 10px;
+        }
     </style>
     <template>
         <nav class="layout horizontal" hidden$="{{_navHidden}}">
-            <div class="nav-title">D</div>
+            <dude-logo class="nav-logo"></dude-logo>
+            <div class="nav-title">DUDE</div>
             <div class="flex"></div>
             <paper-button>Try the beta</paper-button>
         </nav>
-        <header>
-            <div class="header-content">
-                <div class="header-title">D</div>
-                <div class="header-description">A game editor designed for teamwork and flexibility</div>
-                <paper-button id="startButton">Try the beta</paper-button>
-            </div>
+        <header class="layout horizontal">
+            <div class="header-content self-center flex">
+                    <dude-logo class="header-logo"></dude-logo>
+                    <div class="header-title">DUDE</div>
+                    <div class="header-description">A game editor designed for teamwork and flexibility</div>
+                    <paper-button id="startButton">Try the beta</paper-button>
+                </div>
             <video autoplay loop muted>
                 <source src="../resources/videos/Dude.mp4" type="video/mp4">
                 Your browser does not support the video tag.
@@ -277,16 +291,24 @@
         </section>
         <section>
             <div class="section-title">Some UI Examples</div>
-            <div style="width: 200px; background: rgba(0, 0, 0, .2); padding: 20px">
-                <div style="font-size: 1.5em">Test properties</div>
-                <dude-property property="{{_propertyPosition}}"></dude-property>
-                <dude-property property="{{_propertyUv}}"></dude-property>
-                <dude-property property="{{_propertyName}}"></dude-property>
-                <dude-property property="{{_propertyRatio}}"></dude-property>
-                <dude-property property="{{_propertyColor}}"></dude-property>
-                <dude-property property="{{_propertyEnabled}}"></dude-property>
-                <dude-property property="{{_propertyTexture}}"></dude-property>
-                <dude-property property="{{_propertyFov}}"></dude-property>
+            <div class="section-content layout horizontal wrap">
+                <div class="flex ui-column">
+                    <div style="font-size: 1.5em">Test properties</div>
+                    <dude-property property="{{_propertyPosition}}"></dude-property>
+                    <dude-property property="{{_propertyUv}}"></dude-property>
+                    <dude-property property="{{_propertyName}}"></dude-property>
+                    <dude-property property="{{_propertyRatio}}"></dude-property>
+                    <dude-property property="{{_propertyColor}}"></dude-property>
+                    <dude-property property="{{_propertyEnabled}}"></dude-property>
+                    <dude-property property="{{_propertyTexture}}"></dude-property>
+                    <dude-property property="{{_propertyFov}}"></dude-property>
+                </div>
+                <div class="flex ui-column">
+                    TODO
+                </div>
+                <div class="flex ui-column">
+                    TODO
+                </div>
             </div>
         </section>
         <section>
@@ -323,10 +345,10 @@
                 this.set("_propertyFov", {name: "fov", type: "range", value: {min: 0, max: 1, step: 0.1, value: 0}});
                 this.set("_propertyEnabled", {name: "enabled", type: "boolean", value: true});
                 this.set("_propertyTexture", {name: "texture", type: "resource", value: "test.png"});
-                this.set("_propertyShapes")
+                this.set("_propertyShapes", {name: "shapes", type: "choice", value: ["rect", "circle", "triangle"]});
                 this.set("_navHidden", true);
                 window.addEventListener("scroll", function () {
-                    this.set('_navHidden', document.body.scrollTop < 450);
+                    this.set('_navHidden', document.body.scrollTop < window.innerHeight);
                 }.bind(this));
             }
         });
