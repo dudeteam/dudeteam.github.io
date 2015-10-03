@@ -4,7 +4,6 @@
 <link rel="import" href="../bower_components/magnet-hierarchy/magnet-hierarchy.html">
 <link rel="import" href="dude-logo.html">
 <link rel="import" href="dude-property.html">
-<link href='//fonts.googleapis.com/css?family=Slackey' rel='stylesheet' type='text/css'>
 <dom-module id="dude-landing-page">
     <style>
         paper-button {
@@ -29,12 +28,14 @@
             display: block;
         }
         .nav-title {
-            font-family: Slackey, sans-serif;
+            font-family: var(--logo-font);
             font-size: 1.5em;
+            padding-top: 7px;
             padding-left: 10px;
             color: var(--default-primary-color);
         }
         header {
+            position: relative;
             height: 100vh;
             width: 100vw;
             overflow: hidden;
@@ -44,12 +45,12 @@
             z-index: 2;
         }
         .header-title {
-            font-family: Slackey, sans-serif;
+            font-family: var(--logo-font);
             font-size: 3em;
             text-align: center;
             color: var(--default-primary-color);
-            /*font-weight: 300;*/
             box-sizing: border-box;
+            padding: 10px 0;
         }
         .header-logo {
             margin: auto;
@@ -75,6 +76,18 @@
             min-width: 100%;
             min-height: 100%;
             object-fit: fill;
+        }
+        #learnMore {
+            position: absolute;
+            display: block;
+            color: var(--default-primary-color);
+            text-decoration: none;
+            bottom: 0;
+            text-align: center;
+            left: 0;
+            right: 0;
+            padding: 20px;
+            font-size: 1.2em;
         }
         section {
             padding: 20px;
@@ -166,12 +179,14 @@
             <div class="flex"></div>
             <paper-button>Try the beta</paper-button>
         </nav>
-        <header class="layout horizontal">
-            <div class="header-content self-center flex">
+        <header>
+            <div class="layout horizontal fit">
+                <div class="header-content self-center flex">
                     <dude-logo class="header-logo"></dude-logo>
                     <div class="header-title">DUDE</div>
                     <div class="header-description">A game editor designed for teamwork and flexibility</div>
                     <paper-button id="startButton">Try the beta</paper-button>
+                </div>
             </div>
             <div class="fit">
                 <video autoplay loop muted>
@@ -179,8 +194,12 @@
                     Your browser does not support the video tag.
                 </video>
             </div>
+            <a href="#features" id="learnMore">
+                <div>learn more</div>
+                <i class="mdi mdi-arrow-down"></i>
+            </a>
         </header>
-        <section>
+        <section id="features">
             <div class="section-title">Features</div>
             <div class="layout horizontal wrap section-content">
                 <div class="feature flex">
@@ -332,7 +351,7 @@
             </div>
         </section>
         <footer>
-            (c) Dude 2015
+            © Dude 2015 - All rights reserved
         </footer>
     </template>
     <script>
