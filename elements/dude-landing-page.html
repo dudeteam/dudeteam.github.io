@@ -13,7 +13,7 @@
             /*color: var(--text-primary-color);*/
         }
         nav {
-            background: rgba(0, 0, 0, 0.5);
+            background: rgba(20, 20, 20, 0.8);
             position: fixed;
             top: 0;
             left: 0;
@@ -171,22 +171,22 @@
             <img src="../resources/images/dude-logo.png" width="40" class="logo">
             <div class="nav-title">DUDE</div>
             <div class="flex"></div>
-            <paper-button>Try the beta</paper-button>
+            <paper-button on-click="_openEditor">Try the beta</paper-button>
         </nav>
         <header>
             <div class="layout horizontal fit">
                 <div class="header-content self-center flex">
                     <img src="../resources/images/dude-logo.png" width="200" class="logo">
                     <div class="header-title">DUDE</div>
-                    <div class="header-description">A game editor designed for teamwork and flexibility</div>
-                    <paper-button id="startButton">Try the beta</paper-button>
+                    <div class="header-description">A web game editor designed for speed and simplicity</div>
+                    <paper-button id="startButton" on-click="_openEditor">Try the beta</paper-button>
                 </div>
             </div>
             <div class="fit">
-                <video autoplay loop muted hidden>
-                    <source src="../resources/videos/presentation-video.mp4" type="video/mp4">
-                    Your browser does not support the video tag.
-                </video>
+                <!--<video autoplay loop muted hidden>-->
+                    <!--<source src="../resources/videos/presentation-video.mp4" type="video/mp4">-->
+                    <!--Your browser does not support the video tag.-->
+                <!--</video>-->
             </div>
             <a href="#features" id="learnMore">
                 <div>learn more</div>
@@ -221,23 +221,42 @@
                     </div>
                 </div>
                 <div class="feature flex">
-                    <i class="fa fa-smile-o"></i>
-                    <div class="feature-title">Teamwork</div>
-                    <div class="feature-description">This feature is really amazing, it takes your ideas and make them even better!</div>
-                </div>
-                <div class="feature flex">
                     <i class="fa fa-cogs"></i>
                     <div class="feature-title">Customisation</div>
-                    <div class="feature-description">This feature is really amazing, it takes your ideas and make them even better!</div>
+                    <div class="feature-description">
+                        Every aspect of DUDE is customisable. You can add custom
+                        panels to the editors and C++ plug-ins to the engine in very few steps.
+                    </div>
                 </div>
                 <div class="feature flex">
-                    <i class="fa fa-paint-brush"></i>
-                    <div class="feature-title">Graphics</div>
-                    <div class="feature-description">This feature is really amazing, it takes your ideas and make them even better!</div>
+                    <i class="fa fa-smile-o"></i>
+                    <div class="feature-title">Teamwork</div>
+                    <div class="feature-description">
+                        For us, it's really important to make collaboration very simple. We want to provide very easy
+                        tools to share and synchronise work within a team.
+                    </div>
+                </div>
+                <div class="feature flex">
+                    <i class="fa fa-code"></i>
+                    <div class="feature-title">Native code</div>
+                    <div class="feature-description">
+                        You know what is really awesome with DUDE? All the games are integrally generated in C++.
+                        Your game will be 100% native on every platform.
+                    </div>
                 </div>
             </div>
         </section>
         <section>
+            <div class="section-title">Le prototype</div>
+            <p style="text-align: center; padding: 10px;">
+                The following video presents briefly what we have been able to achieve for our first prototype:
+            </p>
+            <video style="width: 100%; display: block; margin: auto; max-width: 600px" preload="auto" controls>
+                <source src="../resources/videos/dude.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+        </section>
+        <section hidden>
             <div class="section-title">Get started</div>
             <div class="layout horizontal wrap section-content">
                 <paper-button href="#tutorials" class="card flex">
@@ -251,6 +270,23 @@
                 <paper-button href="#examples" class="card flex">
                     <i class="fa fa-gamepad"></i>
                     <div class="card-title">Examples</div>
+                </paper-button>
+            </div>
+        </section>
+        <section hidden>
+            <div class="section-title">Find us on social networks</div>
+            <div class="section-content layout horizontal wrap">
+                <paper-button id="facebook-card" class="flex card">
+                    <i class="fa fa-facebook-f"></i>
+                    <div class="card-title">Facebook</div>
+                </paper-button>
+                <paper-button id="google-card" class="flex card">
+                    <i class="fa fa-google-plus"></i>
+                    <div class="card-title">Google</div>
+                </paper-button>
+                <paper-button id="twitter-card" class="flex card">
+                    <i class="fa fa-twitter"></i>
+                    <div class="card-title">Twitter</div>
                 </paper-button>
             </div>
         </section>
@@ -282,66 +318,29 @@
         <section>
             <div class="section-title">Give us feedbacks</div>
             <div class="layout horizontal wrap section-content">
-                <div class="flex" style="min-width: 200px; padding: 20px">
-                    <p>
+                <div class="flex" style="min-width: 200px; max-width: 500px;text-align: center; margin: auto">
+                    <p style="margin-top: 0">
                         DUDE is in its very early stage. Everything is evolving very fast, that's why we need your
                         feedbacks to build a better product.
                     </p>
                     <p>
-                        Try the alpha, and tell us about the features you like or you dislikes. You can also propose
+                        Try the beta, and tell us about the features you like or you dislikes. You can also propose
                         us new features that you think would be useful to the project.
+                    </p>
+                    <p>
+                        Finally, if you have any questions about the project do not hesitate to ask us be email!
                     </p>
                     <p>
                         Thank you!
                     </p>
+                    <paper-button on-click="_sendMail">Send a mail</paper-button>
                 </div>
-                <div class="flex" style="min-width: 200px; padding: 20px">
+                <div class="flex" style="min-width: 200px; padding: 20px" hidden>
                     <paper-input label="Email"></paper-input>
                     <paper-input label="Object"></paper-input>
                     <paper-input label="Content"></paper-input>
                     <paper-button>Send</paper-button>
                 </div>
-            </div>
-        </section>
-        <section>
-            <div class="section-title">Some UI Examples</div>
-            <div class="section-content layout horizontal wrap">
-                <div class="flex ui-column">
-                    <div style="font-size: 1.5em">Test properties</div>
-                    <dude-property property="{{_propertyPosition}}"></dude-property>
-                    <dude-property property="{{_propertyUv}}"></dude-property>
-                    <dude-property property="{{_propertyName}}"></dude-property>
-                    <dude-property property="{{_propertyRatio}}"></dude-property>
-                    <dude-property property="{{_propertyColor}}"></dude-property>
-                    <dude-property property="{{_propertyEnabled}}"></dude-property>
-                    <dude-property property="{{_propertyTexture}}"></dude-property>
-                    <dude-property property="{{_propertyFov}}"></dude-property>
-                </div>
-                <div class="flex ui-column">
-                    <div style="font-size: 1.5em">Test hierarchy</div>
-                    <magnet-hierarchy id="hierarchy" items="{{_hierarchyItems}}"></magnet-hierarchy>
-                </div>
-                <div class="flex ui-column">
-                    <div style="font-size: 1.5em">Another test</div>
-                    <div>TODO</div>
-                </div>
-            </div>
-        </section>
-        <section>
-            <div class="section-title">Find us on social networks</div>
-            <div class="section-content layout horizontal wrap">
-                <paper-button id="facebook-card" class="flex card">
-                    <i class="fa fa-facebook-f"></i>
-                    <div class="card-title">Facebook</div>
-                </paper-button>
-                <paper-button id="google-card" class="flex card">
-                    <i class="fa fa-google-plus"></i>
-                    <div class="card-title">Google</div>
-                </paper-button>
-                <paper-button id="twitter-card" class="flex card">
-                    <i class="fa fa-twitter"></i>
-                    <div class="card-title">Twitter</div>
-                </paper-button>
             </div>
         </section>
         <footer>
@@ -352,45 +351,26 @@
         Polymer({
             is: "dude-landing-page",
 
+            /**
+             * Called when this element is ready.
+             */
             ready: function () {
-                this.set("_propertyPosition", {name: "position", type: "vec3", value: {x: 0, y: 0, z: 0}});
-                this.set("_propertyUv", {name: "uv", type: "vec2", value: {x: 0, y: 1}});
-                this.set("_propertyRatio", {name: "ratio", type: "number", value: 0.3});
-                this.set("_propertyName", {name: "name", type: "string", value: "My entity"});
-                this.set("_propertyColor", {name: "color", type: "color", value: "#ff0000"});
-                this.set("_propertyFov", {name: "fov", type: "range", value: {min: 1, max: 180, step: 1, value: 0}});
-                this.set("_propertyEnabled", {name: "enabled", type: "boolean", value: true});
-                this.set("_propertyTexture", {name: "texture", type: "resource", value: "test.png"});
-                this.set("_propertyShapes", {name: "shapes", type: "choice", value: ["rect", "circle", "triangle"]});
-                this.set("_hierarchyItems", [
-                    {item: {name: "item1", data: "item1"}},
-                    {item: {name: "item2", data: "item2"}},
-                    {item: {name: "item3", data: "item3"}},
-                    {item: {name: "item4", data: "item4"}},
-                    {group: {name: "item5", data: "item5", items: [
-                        {item: {name: "item5.1", data: "item5.1"}},
-                        {item: {name: "item5.2", data: "item5.2"}},
-                        {item: {name: "item5.3", data: "item5.3"}},
-                        {item: {name: "item5.4", data: "item5.4"}},
-                        {group: {name: "item5.5", data: "item5.5", items: [
-                            {item: {name: "item5.5.1", data: "item5.5.1"}},
-                            {item: {name: "item5.5.2", data: "item5.5.2"}}
-                        ]}}
-                    ]}},
-                    {group: {name: "empty_folder", data: "empty"}},
-                    {item: {name: "item6", data: "item6"}},
-                    {item: {name: "item7", data: "item7"}},
-                    {group: {name: "test_folder", items: [
-                        {item: {name: "first item"}},
-                        {item: {name: "item1", data: "item1"}},
-                        {item: {name: "item2", data: "item2"}}
-                    ]}}
-                ]);
-                this.$.hierarchy.loadItems(this._hierarchyItems);
                 this.set("_navHidden", true);
                 window.addEventListener("scroll", function () {
                     this.set('_navHidden', document.body.scrollTop < window.innerHeight);
                 }.bind(this));
+            },
+
+            /**
+             * This function open the default email application, it should be replaced by a proper mailing list later.
+             * @private
+             */
+            _sendMail: function () {
+                window.open("mailto:taboada.jeremie@gmail.com");
+            },
+
+            _openEditor: function () {
+                window.alert("Sorry, it's not ready yet. But the BETA is coming very soon!");
             }
         });
     </script>
