@@ -1,0 +1,39 @@
+{
+  "name": "magnet-hierarchy",
+  "version": "0.0.6",
+  "authors": [
+    "Maxime Perrimond <max.perrimond@gmail.com>"
+  ],
+  "description": "Polymer element to create dynamically a hierarchy",
+  "keywords": [
+    "magnet",
+    "hierarchy",
+    "polymer"
+  ],
+  "main": "magnet-hierarchy.html",
+  "license": "MIT",
+  "homepage": "https://github.com/dudeteam/magnet-hierarchy/",
+  "ignore": [
+    "bower_components",
+    "/.*"
+  ],
+  "dependencies": {
+    "polymer": "Polymer/polymer#^1.0.0",
+    "components-font-awesome": "~4.3.0"
+  },
+  "devDependencies": {
+    "iron-component-page": "PolymerElements/iron-component-page#^1.0.0",
+    "iron-a11y-keys-behavior": "PolymerElements/iron-a11y-keys-behavior#^1.0.0",
+    "web-component-tester": "*"
+  },
+  "_release": "0.0.6",
+  "_resolution": {
+    "type": "version",
+    "tag": "v0.0.6",
+    "commit": "a9e7d1dc651caa66d0c62e0de8c4f70573296c98"
+  },
+  "_source": "git://github.com/dudeteam/magnet-hierarchy.git",
+  "_target": "~0.0.6",
+  "_originalSource": "magnet-hierarchy",
+  "_direct": true
+}

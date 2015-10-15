@@ -1,0 +1,261 @@
+<!--
+Copyright (c) 2015 DudeTeam. All rights reserved.
+Authored by Maxime Perrimond <max.perrimond@gmail.com>
+-->
+<link rel="import" href="../polymer/polymer.html">
+<link rel="stylesheet" type="text/css" href="../components-font-awesome/css/font-awesome.min.css">
+
+<dom-module id="magnet-hierarchy-item">
+
+    <style>
+
+        :host {
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            flex-wrap: nowrap;
+            justify-content: flex-start;
+            align-items: stretch;
+            padding: 2px;
+            @apply(--magnet-hierarchy-item)
+        }
+
+        #item {
+            display: flex;
+            flex-direction: row;
+            flex-wrap: nowrap;
+            justify-content: flex-start;
+            align-items: stretch;
+            padding: 3px 0;
+        }
+
+        :host(.hidden) {
+            display: none !important;
+        }
+
+        :host(.active) > #item {
+            background: var(--default-primary-color);
+            color: var(--text-primary-color);
+
+            @apply(--magnet-hierarchy-selection)
+        }
+
+        .icon {
+            display: inline-block;
+            width: 14px;
+            height: 14px;
+            padding: 0 2px;
+        }
+
+        #item_icon {
+            color: #555;
+        }
+
+        #group {
+            padding-left: 24px;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            flex-wrap: nowrap;
+            justify-content: flex-start;
+            align-items: stretch;
+        }
+
+        :host(:not(.expand)) > #group {
+            display: none;
+        }
+        #name {
+            display: inline-block;
+            padding-left: 5px;
+        }
+        #name > span {
+            background: var(--default-primary-color);
+            color: var(--text-primary-color);
+
+            @apply(--magnet-hierarchy-occurence)
+        }
+    </style>
+
+    <template>
+        <div id="item">
+            <div class="icon">
+                <i id="group_icon" on-click="_expandClick"></i>
+            </div>
+            <div class="icon">
+                <i id="item_icon"></i>
+            </div>
+            <a id="name"></a>
+        </div>
+        <div id="group">
+            <content></content>
+        </div>
+    </template>
+
+    <script>
+        MagnetHierarchyItem = Polymer({
+            is: "magnet-hierarchy-item",
+
+            properties: {
+                name: {
+                    type: String,
+                    observer: "_nameChanged"
+                },
+
+                html: {
+                    type: String,
+                    observer: "_htmlChanged"
+                },
+
+                /**
+                 * Whether the item matches the searchPattern of the hierarchy.
+                 * @type {Boolean}
+                 */
+                match: {
+                    type: Boolean,
+                    value: false
+                },
+
+                filtered: {
+                    type: Boolean,
+                    value: false,
+                    observer: "_filteredChanged"
+                },
+
+                icon: {
+                    type: String,
+                    value: "fa fa-file-o",
+                    observer: "_iconChanged"
+                },
+
+                groupIcon: {
+                    type: String,
+                    value: "fa fa-caret-right"
+                },
+
+                groupIconExpand: {
+                    type: String,
+                    value: "fa fa-caret-down"
+                },
+
+                data: {
+                    type: Object,
+                    value: null
+                },
+
+                group: {
+                    type: Boolean,
+                    value: false,
+                    observer: "_groupChanged"
+                },
+
+                expand: {
+                    type: Boolean,
+                    value: false,
+                    observer: "_expandChanged"
+                }
+            },
+
+            listeners: {
+                "down": 'preventSelection',
+                "click": "_onClick"
+            },
+
+            factoryImpl: function (name, data) {
+                this.name = name;
+                this.data = data;
+            },
+
+            pushItem: function (item) {
+                Polymer.dom(this).appendChild(item);
+            },
+
+            insertBeforeItem: function (item, before) {
+
+            },
+
+            removeItem: function (item) {
+
+            },
+
+            moveItem: function (item, before, after) {
+
+            },
+
+            preventSelection: function(e) {
+                e.preventDefault();
+            },
+
+            _onClick: function (event) {
+                event.stopPropagation();
+                this.fire("item-click", {
+                    name: this.name,
+                    data: this.data
+                });
+            },
+
+            _expandClick: function (event) {
+                event.stopPropagation();
+
+                if (this.group) {
+                    this.expand = !this.expand;
+                }
+            },
+
+            _nameChanged: function () {
+                this.html = this.name;
+            },
+
+            _htmlChanged: function () {
+                this.$.name.innerHTML = this.html;
+            },
+
+            _filteredChanged: function () {
+                if (this.filtered && !this.match) {
+                    this.classList.add("hidden");
+                } else {
+                    this.classList.remove("hidden");
+                }
+            },
+
+            _iconChanged: function () {
+                this.$.item_icon.classList = "";
+                this._addClassesTo(this.icon, this.$.item_icon.classList);
+            },
+
+            _groupChanged: function () {
+                if (this.group) {
+                    this._addClassesTo(this.groupIcon, this.$.group_icon.classList);
+                } else {
+                    this._removeClassesTo(this.groupIcon, this.$.group_icon.classList);
+                }
+            },
+
+            _expandChanged: function () {
+                if (this.group) {
+                    if (this.expand) {
+                        this.classList.add("expand");
+                        this._removeClassesTo(this.groupIcon, this.$.group_icon.classList);
+                        this._addClassesTo(this.groupIconExpand, this.$.group_icon.classList);
+                    } else {
+                        this.classList.remove("expand");
+                        this._removeClassesTo(this.groupIconExpand, this.$.group_icon.classList);
+                        this._addClassesTo(this.groupIcon, this.$.group_icon.classList);
+                    }
+                }
+            },
+
+            _addClassesTo: function (classes, to) {
+                classes.split(" ").forEach(function (c) {
+                    to.add(c);
+                });
+            },
+
+            _removeClassesTo: function (classes, to) {
+                classes.split(" ").forEach(function (c) {
+                    to.remove(c);
+                });
+            }
+        });
+    </script>
+
+</dom-module>
