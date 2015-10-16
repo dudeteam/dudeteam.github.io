@@ -46,6 +46,9 @@
             box-sizing: border-box;
             padding: 10px 0;
         }
+        header img.logo {
+            width: 200px;
+        }
         .header-description {
             font-size: 1.5em;
             text-align: center;
@@ -161,9 +164,35 @@
             margin: 10px;
         }
         img.logo {
-            image-rendering: pixelated;
+            image-rendering: optimizeSpeed;             /* STOP SMOOTHING, GIVE ME SPEED  */
+            image-rendering: -moz-crisp-edges;          /* Firefox                        */
+            image-rendering: -o-crisp-edges;            /* Opera                          */
+            image-rendering: -webkit-optimize-contrast; /* Chrome (and eventually Safari) */
+            image-rendering: pixelated; /* Chrome */
+            image-rendering: optimize-contrast;         /* CSS3 Proposed                  */
+            -ms-interpolation-mode: nearest-neighbor;   /* IE8+                           */
             display: block;
             margin: auto;
+        }
+        @media screen and (max-height: 600px) {
+            .header-title {
+                font-size: 2.5em;
+            }
+            .header-description {
+                font-size: 1.2em;
+            }
+            header img.logo {
+                width: 150px;
+            }
+            #startButton {
+                font-size: 1.2em;
+                padding: 10px;
+                max-width: 200px;
+            }
+            #learnMore {
+                padding: 10px;
+                font-size: 1em;
+            }
         }
     </style>
     <template>
@@ -176,7 +205,7 @@
         <header>
             <div class="layout horizontal fit">
                 <div class="header-content self-center flex">
-                    <img src="../resources/images/dude-logo.png" width="200" class="logo">
+                    <img src="../resources/images/dude-logo.png" class="logo">
                     <div class="header-title">DUDE</div>
                     <div class="header-description">A web game editor designed for speed and simplicity</div>
                     <paper-button id="startButton" on-click="_openEditor">Try the beta</paper-button>
@@ -205,14 +234,6 @@
                     </div>
                 </div>
                 <div class="feature flex">
-                    <i class="fa fa-mobile"></i>
-                    <div class="feature-title">Adaptive UI</div>
-                    <div class="feature-description">
-                        The UI is design to work well on several screens and devices. You can edit your game from your
-                        computer as well as from your tablet or smartphone.
-                    </div>
-                </div>
-                <div class="feature flex">
                     <i class="fa fa-share-alt"></i>
                     <div class="feature-title">Visual coding</div>
                     <div class="feature-description">
@@ -221,19 +242,11 @@
                     </div>
                 </div>
                 <div class="feature flex">
-                    <i class="fa fa-cogs"></i>
-                    <div class="feature-title">Customization</div>
+                    <i class="fa fa-gamepad"></i>
+                    <div class="feature-title">Templates</div>
                     <div class="feature-description">
-                        Every aspect of DUDE is customisable. You can add custom
-                        panels to the editors and C++ plug-ins to the engine in very few steps.
-                    </div>
-                </div>
-                <div class="feature flex">
-                    <i class="fa fa-smile-o"></i>
-                    <div class="feature-title">Teamwork</div>
-                    <div class="feature-description">
-                        For us, it's really important to make collaboration very simple. Therefore, we will provide very
-                        easy tools to share and synchronise work within a team.
+                        We created some templates and behaviors to save you time and let you focus on what is the
+                        most important: what makes your make unique and awesome!
                     </div>
                 </div>
                 <div class="feature flex">
@@ -242,6 +255,22 @@
                     <div class="feature-description">
                         You know what is really awesome with DUDE? All the games are integrally generated in C++.
                         Your game will be 100% native on every platform.
+                    </div>
+                </div>
+                <div class="feature flex">
+                    <i class="fa fa-mobile"></i>
+                    <div class="feature-title">Adaptive UI</div>
+                    <div class="feature-description">
+                        The UI is design to work well on several screens and devices. You can edit your game from your
+                        computer as well as from your tablet or smartphone.
+                    </div>
+                </div>
+                <div class="feature flex">
+                    <i class="fa fa-cogs"></i>
+                    <div class="feature-title">Customization</div>
+                    <div class="feature-description">
+                        Every aspect of DUDE is customisable. You can add custom
+                        panels to the editors and C++ plug-ins to the engine in very few steps.
                     </div>
                 </div>
             </div>
